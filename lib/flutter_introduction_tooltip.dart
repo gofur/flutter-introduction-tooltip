@@ -439,11 +439,17 @@ class FlutterIntroductionTooltip {
     try {
       final box = globalKey.currentContext.findRenderObject() as RenderBox;
       Rect rect =  box.localToGlobal(Offset.zero) & box.size;
+
       showGeneralDialog(
         context: context,
         pageBuilder: (BuildContext buildContext, Animation<double> animation,
             Animation<double> secondaryAnimation) {
-          return Scaffold(
+          return WillPopScope(
+              onWillPop: () {
+            var completer = new Completer();
+            completer.complete(false);
+            return completer.future;
+          }, child:Scaffold(
             backgroundColor: Colors.transparent,
             body: SafeArea(
               child: Builder(
@@ -471,7 +477,7 @@ class FlutterIntroductionTooltip {
                   }
               ),
             ),
-          );
+          ));
         },
         barrierDismissible: barrierDismissable,
         barrierLabel: MaterialLocalizations
