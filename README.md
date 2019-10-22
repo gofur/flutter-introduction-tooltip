@@ -1,6 +1,6 @@
 # Flutter Introduction Tooltip
 
-A new Flutter plugin to show introduction tooltip for first timer user of the app.
+A Flutter plugin to show introduction tooltip for showcase information user of the app.
 
 It should support both Android and iOS since it's pure written in Dart.
 
